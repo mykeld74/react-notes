@@ -2,22 +2,38 @@ import React from 'react';
 import { Navbar,Nav,NavItem,MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './App.css';
+import TodoForm from './TodoForm';
 export default class App extends React.Component {
   constructor(props){
     super(props);
     this.toggleAddTodo = this.toggleAddTodo.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 toggleAddTodo(e){
     e.preventDefault();
      this.props.mappedToggleAddTodo();
   }
+addTodo(e){
+      e.preventDefault();
+      const form = document.getElementById('addTodoForm');
+      if(form.todoText.value !== ""  && form.todoDesc.value !== ""){
+        const data = new FormData();
+       data.append('todoText', form.todoText.value);
+        data.append('todoDesc', form.todoDesc.value);
+        this.props.mappedAddTodo(data);
+      }
+      else{
+        return ;
+      }
+  }
 render(){
+    const appState = this.props.mappedAppState;
     return(
       <div>
       <Navbar inverse  collapseOnSelect className="customNav">
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="/#">Todo App</a>
+        <a href="/#">Mern Stack Todo App</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
@@ -35,6 +51,9 @@ render(){
     </Navbar.Collapse>
   </Navbar>
   <div className="container">
+  {appState.showAddTodo &&
+    <TodoForm addTodo={this.addTodo} />
+  }
   { /* Each Smaller Components */}
    {this.props.children}
   </div>
