@@ -66,7 +66,7 @@ export const fetchTodoById = (todoId) => {
   }
 }
 
-export const fetchTodoRequest = () +> {
+export const fetchTodoRequest = () => {
   return {
     type: 'FETCH_TODO_REQUEST'
   }
