@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar,Nav,NavItem,MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import './App.css';
 import TodoForm from './TodoForm';
 export default class App extends React.Component {
   constructor(props){
@@ -30,7 +29,7 @@ render(){
     const appState = this.props.mappedAppState;
     return(
       <div>
-      <Navbar inverse  collapseOnSelect className="customNav">
+      <Navbar inverse collapseOnSelect className="customNav">
     <Navbar.Header>
       <Navbar.Brand>
         <a href="/#">Mern Stack Todo App</a>
