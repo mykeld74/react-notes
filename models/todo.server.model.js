@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 var Schema = mongoose.Schema({
   createdAt:{
     type: Date,
@@ -8,5 +7,4 @@ var Schema = mongoose.Schema({
   fullName: String,
   todoText: String
 });
-
 export default mongoose.model('Todo', Schema);

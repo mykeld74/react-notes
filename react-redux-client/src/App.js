@@ -20,8 +20,8 @@ class App extends Component {
   }
 }
 
-App.PropTypes = {
-  store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+App.propTypes = {
+  store: PropTypes.object,
+  history: PropTypes.object
 }
 export default App;

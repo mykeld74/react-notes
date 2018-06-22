@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar,Nav,NavItem,MenuItem } from 'react-bootstrap';
+import { Navbar,Nav,NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import TodoForm from './TodoForm';
 export default class App extends React.Component {
@@ -17,7 +17,7 @@ addTodo(e){
       const form = document.getElementById('addTodoForm');
       if(form.todoText.value !== ""  && form.todoDesc.value !== ""){
         const data = new FormData();
-       data.append('todoText', form.todoText.value);
+        data.append('todoText', form.todoText.value);
         data.append('todoDesc', form.todoDesc.value);
         this.props.mappedAddTodo(data);
       }
@@ -32,7 +32,7 @@ render(){
       <Navbar inverse collapseOnSelect className="customNav">
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="/#">Mern Stack Todo App</a>
+        <a href="/#">Todo App</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>

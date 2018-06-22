@@ -1,25 +1,23 @@
 import mongoose from 'mongoose';
+//import models
 import Todo from '../models/todo.server.model';
-
-export const getTodos = (req, res) => {
-  Todo.find().exec((err, todos)=> {
+export const getTodos = (req,res) => {
+  Todo.find().exec((err,todos) => {
     if(err){
-      return res.json({'success':false , 'message': 'There was an error'});
+    return res.json({'success':false,'message':'Some Error'});
     }
-    return res.json({'success': true, 'message':'Todos fetched succesfully', todos});
+return res.json({'success':true,'message':'Todos fetched successfully',todos});
   });
 }
-
-export const addTodo = (req, res) => {
+export const addTodo = (req,res) => {
   const newTodo = new Todo(req.body);
   newTodo.save((err,todo) => {
     if(err){
-      return res.json({'success': false, 'message': 'Did not save'})
+    return res.json({'success':false,'message':'Some Error'});
     }
-    return res.json({'success': true, 'message': 'Todo added successfully', todo});
-  });
+return res.json({'success':true,'message':'Todo added successfully',todo});
+  })
 }
-
 export const updateTodo = (req,res) => {
   Todo.findOneAndUpdate({ _id:req.body.id }, req.body, { new:true }, (err,todo) => {
     if(err){
@@ -27,9 +25,8 @@ export const updateTodo = (req,res) => {
     }
     console.log(todo);
     return res.json({'success':true,'message':'Updated successfully',todo});
-  });
+  })
 }
-
 export const getTodo = (req,res) => {
   Todo.find({_id:req.params.id}).exec((err,todo) => {
     if(err){
@@ -41,14 +38,13 @@ export const getTodo = (req,res) => {
     else{
       return res.json({'success':false,'message':'Todo with the given id not found'});
     }
-  });
+  })
 }
-
 export const deleteTodo = (req,res) => {
   Todo.findByIdAndRemove(req.params.id, (err,todo) => {
     if(err){
     return res.json({'success':false,'message':'Some Error'});
     }
 return res.json({'success':true,'message':todo.todoText+' deleted successfully'});
-  });
+  })
 }
