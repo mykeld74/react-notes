@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 //import models
 import Todo from '../models/todo.server.model';
+
 export const getTodos = (req,res) => {
   Todo.find().exec((err,todos) => {
     if(err){

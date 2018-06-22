@@ -8,6 +8,7 @@ import routes from './routes';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
+
 class App extends Component {
   render() {
     return (
@@ -24,4 +25,5 @@ App.propTypes = {
   store: PropTypes.object,
   history: PropTypes.object
 }
+
 export default App;
